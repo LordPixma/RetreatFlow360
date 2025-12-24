@@ -1,0 +1,14 @@
+name = "retreatflow360-ai-gateway"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+[ai]
+binding = "AI"
+
+# Vectorize binding for semantic search
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "retreatflow360-events"
+
+[vars]
+ENVIRONMENT = "development"

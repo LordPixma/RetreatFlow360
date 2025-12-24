@@ -1,0 +1,12 @@
+{
+  "name": "@retreatflow360/config",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./eslint": "./eslint/base.js",
+    "./eslint/react": "./eslint/react.js",
+    "./typescript/base": "./typescript/base.json",
+    "./typescript/react": "./typescript/react.json",
+    "./typescript/worker": "./typescript/worker.json"
+  }
+}

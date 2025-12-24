@@ -1,0 +1,26 @@
+name = "retreatflow360-cron-scheduler"
+main = "src/index.ts"
+compatibility_date = "2024-12-18"
+
+[triggers]
+# Run every hour for event reminders
+crons = ["0 * * * *"]
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "retreatflow360"
+database_id = "placeholder-id"
+
+# KV for caching
+[[kv_namespaces]]
+binding = "KV"
+id = "placeholder-id"
+
+# Queue for sending notifications
+[[queues.producers]]
+queue = "notification-queue"
+binding = "NOTIFICATION_QUEUE"
+
+[vars]
+ENVIRONMENT = "development"

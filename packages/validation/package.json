@@ -1,0 +1,23 @@
+{
+  "name": "@retreatflow360/validation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./auth": "./src/auth.ts",
+    "./events": "./src/events.ts",
+    "./bookings": "./src/bookings.ts",
+    "./payments": "./src/payments.ts",
+    "./users": "./src/users.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

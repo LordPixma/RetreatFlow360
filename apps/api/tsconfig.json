@@ -1,0 +1,11 @@
+{
+  "extends": "@retreatflow360/config/typescript/worker",
+  "compilerOptions": {
+    "types": ["@cloudflare/workers-types/2023-07-01", "@cloudflare/vitest-pool-workers"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

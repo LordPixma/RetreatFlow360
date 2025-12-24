@@ -1,0 +1,20 @@
+name = "retreatflow360-queue-processor"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+[[queues.consumers]]
+queue = "payment-webhooks"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "payment-webhooks-dlq"
+
+[[queues.consumers]]
+queue = "email-notifications"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "email-notifications-dlq"
+
+[vars]
+ENVIRONMENT = "development"

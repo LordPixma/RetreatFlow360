@@ -1,0 +1,27 @@
+{
+  "name": "@retreatflow360/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./jwt": "./src/jwt.ts",
+    "./password": "./src/password.ts",
+    "./oauth": "./src/oauth/index.ts",
+    "./rbac": "./src/rbac.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@retreatflow360/database": "*",
+    "@retreatflow360/shared-types": "*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

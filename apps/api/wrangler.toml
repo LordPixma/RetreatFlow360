@@ -1,0 +1,87 @@
+name = "retreatflow360-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-18"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+# Development bindings
+[[d1_databases]]
+binding = "DB"
+database_name = "retreatflow360-dev"
+database_id = "local"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "sessions-dev"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "cache-dev"
+
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "retreatflow360-storage-dev"
+
+[[queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "notifications-dev"
+
+[[queues.producers]]
+binding = "PAYMENT_QUEUE"
+queue = "payments-dev"
+
+[vars]
+ENVIRONMENT = "development"
+JWT_ISSUER = "retreatflow360.dev"
+
+# Staging environment
+[env.staging]
+name = "retreatflow360-api-staging"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "retreatflow360-staging"
+database_id = "YOUR_STAGING_DB_ID"
+
+[[env.staging.kv_namespaces]]
+binding = "SESSIONS"
+id = "YOUR_STAGING_SESSIONS_KV_ID"
+
+[[env.staging.kv_namespaces]]
+binding = "CACHE"
+id = "YOUR_STAGING_CACHE_KV_ID"
+
+[[env.staging.r2_buckets]]
+binding = "STORAGE"
+bucket_name = "retreatflow360-storage-staging"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+JWT_ISSUER = "staging.retreatflow360.com"
+
+# Production environment
+[env.production]
+name = "retreatflow360-api"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "retreatflow360-prod"
+database_id = "YOUR_PROD_DB_ID"
+
+[[env.production.kv_namespaces]]
+binding = "SESSIONS"
+id = "YOUR_PROD_SESSIONS_KV_ID"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "YOUR_PROD_CACHE_KV_ID"
+
+[[env.production.r2_buckets]]
+binding = "STORAGE"
+bucket_name = "retreatflow360-storage-prod"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+JWT_ISSUER = "retreatflow360.com"
