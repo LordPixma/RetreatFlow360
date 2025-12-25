@@ -595,4 +595,78 @@ app.put('/tenants/:id/feature-flags', async (c) => {
   return c.json({ success: true, featureFlags: flags });
 });
 
+/**
+ * Send a test email (for verifying Resend configuration)
+ */
+const testEmailSchema = z.object({
+  to: z.string().email(),
+  subject: z.string().min(1).max(200).optional(),
+});
+
+app.post('/test-email', zValidator('json', testEmailSchema), async (c) => {
+  const { to, subject } = c.req.valid('json');
+
+  if (!c.env.RESEND_API_KEY) {
+    return c.json({ error: 'RESEND_API_KEY not configured' }, 500);
+  }
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${c.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'RetreatFlow360 <onboarding@resend.dev>',
+        to: [to],
+        subject: subject || 'RetreatFlow360 - Test Email',
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Test Email</title>
+            </head>
+            <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+              <h1 style="color: #4F46E5;">🎉 Email Configuration Working!</h1>
+              <p>This is a test email from your RetreatFlow360 platform.</p>
+              <p>If you're receiving this email, your Resend integration is properly configured.</p>
+              <hr style="border: 1px solid #E5E7EB; margin: 20px 0;">
+              <p style="color: #6B7280; font-size: 14px;">
+                Sent at: ${new Date().toISOString()}<br>
+                Environment: ${c.env.ENVIRONMENT || 'unknown'}
+              </p>
+            </body>
+          </html>
+        `,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      return c.json({
+        success: false,
+        error: 'Failed to send email',
+        details: error
+      }, 400);
+    }
+
+    const result = await response.json() as { id: string };
+    return c.json({
+      success: true,
+      message: 'Test email sent successfully',
+      emailId: result.id,
+      to
+    });
+  } catch (error) {
+    console.error('Email send error:', error);
+    return c.json({
+      success: false,
+      error: 'Failed to send email',
+      details: String(error)
+    }, 500);
+  }
+});
+
 export default app;
