@@ -11,3 +11,40 @@ bindings = [
 [[migrations]]
 tag = "v1"
 new_classes = ["EventBookingCoordinator", "RoomAllocationLock"]
+
+[vars]
+ENVIRONMENT = "development"
+
+# Staging environment
+[env.staging]
+name = "retreatflow360-realtime-staging"
+
+[env.staging.durable_objects]
+bindings = [
+  { name = "EVENT_COORDINATOR", class_name = "EventBookingCoordinator" },
+  { name = "ROOM_LOCK", class_name = "RoomAllocationLock" }
+]
+
+[[env.staging.migrations]]
+tag = "v1"
+new_classes = ["EventBookingCoordinator", "RoomAllocationLock"]
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Production environment
+[env.production]
+name = "retreatflow360-realtime"
+
+[env.production.durable_objects]
+bindings = [
+  { name = "EVENT_COORDINATOR", class_name = "EventBookingCoordinator" },
+  { name = "ROOM_LOCK", class_name = "RoomAllocationLock" }
+]
+
+[[env.production.migrations]]
+tag = "v1"
+new_classes = ["EventBookingCoordinator", "RoomAllocationLock"]
+
+[env.production.vars]
+ENVIRONMENT = "production"

@@ -9,18 +9,51 @@ crons = ["0 * * * *"]
 # D1 Database
 [[d1_databases]]
 binding = "DB"
-database_name = "retreatflow360"
-database_id = "placeholder-id"
-
-# KV for caching
-[[kv_namespaces]]
-binding = "KV"
-id = "placeholder-id"
+database_name = "retreatflow360-dev"
+database_id = "local"
 
 # Queue for sending notifications
 [[queues.producers]]
-queue = "notification-queue"
+queue = "notifications-dev"
 binding = "NOTIFICATION_QUEUE"
 
 [vars]
 ENVIRONMENT = "development"
+
+# Staging environment
+[env.staging]
+name = "retreatflow360-cron-scheduler-staging"
+
+[env.staging.triggers]
+crons = ["0 * * * *"]
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "retreatflow360-staging"
+database_id = "d426f27b-8876-4ab8-8186-8e9fe1b65fe3"
+
+[[env.staging.queues.producers]]
+queue = "notifications-staging"
+binding = "NOTIFICATION_QUEUE"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Production environment
+[env.production]
+name = "retreatflow360-cron-scheduler"
+
+[env.production.triggers]
+crons = ["0 * * * *"]
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "retreatflow360-prod"
+database_id = "34aa0597-18b7-47e2-af4e-39c426b2450f"
+
+[[env.production.queues.producers]]
+queue = "notifications-prod"
+binding = "NOTIFICATION_QUEUE"
+
+[env.production.vars]
+ENVIRONMENT = "production"

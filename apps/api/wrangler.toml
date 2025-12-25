@@ -43,15 +43,15 @@ name = "retreatflow360-api-staging"
 [[env.staging.d1_databases]]
 binding = "DB"
 database_name = "retreatflow360-staging"
-database_id = "YOUR_STAGING_DB_ID"
+database_id = "d426f27b-8876-4ab8-8186-8e9fe1b65fe3"
 
 [[env.staging.kv_namespaces]]
 binding = "SESSIONS"
-id = "YOUR_STAGING_SESSIONS_KV_ID"
+id = "2c4e3bed8b2840a69fd24ca843605d12"
 
 [[env.staging.kv_namespaces]]
 binding = "CACHE"
-id = "YOUR_STAGING_CACHE_KV_ID"
+id = "166a0fb46ba34e65b6dd44b2088e7ca9"
 
 [[env.staging.r2_buckets]]
 binding = "STORAGE"
@@ -68,15 +68,15 @@ name = "retreatflow360-api"
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "retreatflow360-prod"
-database_id = "YOUR_PROD_DB_ID"
+database_id = "34aa0597-18b7-47e2-af4e-39c426b2450f"
 
 [[env.production.kv_namespaces]]
 binding = "SESSIONS"
-id = "YOUR_PROD_SESSIONS_KV_ID"
+id = "28045557813e47b092c1a63a16ad7df7"
 
 [[env.production.kv_namespaces]]
 binding = "CACHE"
-id = "YOUR_PROD_CACHE_KV_ID"
+id = "9bf1df0458a1442284bb19f839ec1e24"
 
 [[env.production.r2_buckets]]
 binding = "STORAGE"

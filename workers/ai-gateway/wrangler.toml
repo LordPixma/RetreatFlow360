@@ -8,7 +8,35 @@ binding = "AI"
 # Vectorize binding for semantic search
 [[vectorize]]
 binding = "VECTORIZE"
-index_name = "retreatflow360-events"
+index_name = "retreatflow360-events-dev"
 
 [vars]
 ENVIRONMENT = "development"
+
+# Staging environment
+[env.staging]
+name = "retreatflow360-ai-gateway-staging"
+
+[env.staging.ai]
+binding = "AI"
+
+[[env.staging.vectorize]]
+binding = "VECTORIZE"
+index_name = "retreatflow360-events-staging"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Production environment
+[env.production]
+name = "retreatflow360-ai-gateway"
+
+[env.production.ai]
+binding = "AI"
+
+[[env.production.vectorize]]
+binding = "VECTORIZE"
+index_name = "retreatflow360-events-prod"
+
+[env.production.vars]
+ENVIRONMENT = "production"

@@ -3,18 +3,54 @@ main = "src/index.ts"
 compatibility_date = "2024-11-01"
 
 [[queues.consumers]]
-queue = "payment-webhooks"
+queue = "notifications-dev"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 3
-dead_letter_queue = "payment-webhooks-dlq"
 
 [[queues.consumers]]
-queue = "email-notifications"
+queue = "payments-dev"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 3
-dead_letter_queue = "email-notifications-dlq"
 
 [vars]
 ENVIRONMENT = "development"
+
+# Staging environment
+[env.staging]
+name = "retreatflow360-queue-processor-staging"
+
+[[env.staging.queues.consumers]]
+queue = "notifications-staging"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+
+[[env.staging.queues.consumers]]
+queue = "payments-staging"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Production environment
+[env.production]
+name = "retreatflow360-queue-processor"
+
+[[env.production.queues.consumers]]
+queue = "notifications-prod"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+
+[[env.production.queues.consumers]]
+queue = "payments-prod"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+
+[env.production.vars]
+ENVIRONMENT = "production"
