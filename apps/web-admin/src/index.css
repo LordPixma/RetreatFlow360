@@ -1,0 +1,5 @@
+@import '@retreatflow360/ui/globals.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
