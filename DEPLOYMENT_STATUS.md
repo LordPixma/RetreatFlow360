@@ -75,6 +75,23 @@ Last Updated: 2025-12-25
 - **Metric:** cosine
 - **Status:** ✅ CREATED
 
+### Frontend Apps (Cloudflare Pages)
+
+#### Attendee Portal
+- **Project:** retreatflow360-attendee-staging
+- **URL:** https://retreatflow360-attendee-staging.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
+#### Owner Dashboard
+- **Project:** retreatflow360-owner-staging
+- **URL:** https://retreatflow360-owner-staging.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
+#### Admin Console
+- **Project:** retreatflow360-admin-staging
+- **URL:** https://retreatflow360-admin-staging.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
 ---
 
 ## 🔧 Production Environment - READY
@@ -105,6 +122,23 @@ Last Updated: 2025-12-25
 - **notifications-prod:** ✅ CREATED
 - **payments-prod:** ✅ CREATED
 
+### Frontend Apps (Cloudflare Pages)
+
+#### Attendee Portal
+- **Project:** retreatflow360-attendee
+- **URL:** https://retreatflow360-attendee.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
+#### Owner Dashboard
+- **Project:** retreatflow360-owner
+- **URL:** https://retreatflow360-owner.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
+#### Admin Console
+- **Project:** retreatflow360-admin
+- **URL:** https://retreatflow360-admin.pages.dev
+- **Status:** ✅ CREATED (not deployed yet)
+
 ---
 
 ## 📋 Next Steps
@@ -124,14 +158,17 @@ Last Updated: 2025-12-25
    npx wrangler secret put TURNSTILE_SECRET_KEY --env production
    ```
 
-2. **Create Cloudflare Pages Projects**
-   - Go to Cloudflare Dashboard → Pages
-   - Create 3 projects (connect to GitHub):
-     - `retreatflow360-attendee-staging` (from `develop` branch)
-     - `retreatflow360-owner-staging` (from `develop` branch)
-     - `retreatflow360-admin-staging` (from `develop` branch)
+2. **Create Cloudflare Pages Projects** ✅ COMPLETED
+   - Staging projects:
+     - `retreatflow360-attendee-staging` ✅
+     - `retreatflow360-owner-staging` ✅
+     - `retreatflow360-admin-staging` ✅
+   - Production projects:
+     - `retreatflow360-attendee` ✅
+     - `retreatflow360-owner` ✅
+     - `retreatflow360-admin` ✅
 
-3. **Configure GitHub Secrets**
+3. **Configure GitHub Secrets** ✅ COMPLETED
    - `CLOUDFLARE_API_TOKEN` - ✅ Already configured
    - `CLOUDFLARE_ACCOUNT_ID` - ✅ Already configured
 
