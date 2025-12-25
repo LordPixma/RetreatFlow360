@@ -79,22 +79,22 @@ Last Updated: 2025-12-25
 
 #### Attendee Portal
 - **Project:** retreatflow360-attendee-staging
-- **URL:** https://retreatflow360-attendee-staging.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **URL:** https://staging.retreatflow360-attendee-staging.pages.dev
+- **Status:** ✅ DEPLOYED
 
 #### Owner Dashboard
 - **Project:** retreatflow360-owner-staging
-- **URL:** https://retreatflow360-owner-staging.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **URL:** https://staging.retreatflow360-owner-staging.pages.dev
+- **Status:** ✅ DEPLOYED
 
 #### Admin Console
 - **Project:** retreatflow360-admin-staging
-- **URL:** https://retreatflow360-admin-staging.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **URL:** https://staging.retreatflow360-admin-staging.pages.dev
+- **Status:** ✅ DEPLOYED
 
 ---
 
-## 🔧 Production Environment - READY
+## 🔧 Production Environment - LIVE ✅
 
 ### Database
 - **D1 Database:** `retreatflow360-prod` (34aa0597-18b7-47e2-af4e-39c426b2450f)
@@ -103,10 +103,48 @@ Last Updated: 2025-12-25
 - **Region:** WEUR (Western Europe)
 - **Size:** 0.42 MB
 
-### Workers
-- **Status:** ⏸️ NOT DEPLOYED YET
-- **Migrations:** ✅ Complete
-- **Vectorize Index:** ✅ Created (retreatflow360-events-prod)
+### Workers Deployed
+
+#### 1. API Worker
+- **URL:** https://retreatflow360-api.samuel-1e5.workers.dev
+- **Status:** ✅ HEALTHY
+- **Bindings:**
+  - D1: retreatflow360-prod
+  - KV: sessions (28045557813e47b092c1a63a16ad7df7)
+  - KV: cache (9bf1df0458a1442284bb19f839ec1e24)
+  - R2: retreatflow360-storage-prod
+  - Queue Producer: notifications-prod
+  - Queue Producer: payments-prod
+- **Health Check:** Pass (253ms latency)
+
+#### 2. Queue Processor
+- **URL:** https://retreatflow360-queue-processor.samuel-1e5.workers.dev
+- **Status:** ✅ DEPLOYED
+- **Bindings:**
+  - Queue Consumer: notifications-prod
+  - Queue Consumer: payments-prod
+
+#### 3. Realtime Worker
+- **URL:** https://retreatflow360-realtime.samuel-1e5.workers.dev
+- **Status:** ✅ DEPLOYED
+- **Bindings:**
+  - Durable Object: EventBookingCoordinator
+  - Durable Object: RoomAllocationLock
+
+#### 4. AI Gateway
+- **URL:** https://retreatflow360-ai-gateway.samuel-1e5.workers.dev
+- **Status:** ✅ DEPLOYED
+- **Bindings:**
+  - Vectorize: retreatflow360-events-prod (768d, cosine)
+  - Workers AI: Enabled
+
+#### 5. Cron Scheduler
+- **URL:** https://retreatflow360-cron-scheduler.samuel-1e5.workers.dev
+- **Status:** ✅ DEPLOYED
+- **Schedule:** Every hour (0 * * * *)
+- **Bindings:**
+  - D1: retreatflow360-prod
+  - Queue Producer: notifications-prod
 
 ### Storage Resources
 
@@ -127,17 +165,17 @@ Last Updated: 2025-12-25
 #### Attendee Portal
 - **Project:** retreatflow360-attendee
 - **URL:** https://retreatflow360-attendee.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **Status:** ✅ DEPLOYED
 
 #### Owner Dashboard
 - **Project:** retreatflow360-owner
 - **URL:** https://retreatflow360-owner.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **Status:** ✅ DEPLOYED
 
 #### Admin Console
 - **Project:** retreatflow360-admin
 - **URL:** https://retreatflow360-admin.pages.dev
-- **Status:** ✅ CREATED (not deployed yet)
+- **Status:** ✅ DEPLOYED
 
 ---
 
