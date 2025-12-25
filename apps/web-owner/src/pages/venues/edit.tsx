@@ -71,7 +71,7 @@ export default function VenueEditPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<VenueForm>();
 
   const updateVenueMutation = useMutation({

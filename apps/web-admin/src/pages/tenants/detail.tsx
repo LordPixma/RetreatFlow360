@@ -6,12 +6,9 @@ import {
   Users,
   Calendar,
   DollarSign,
-  Globe,
-  Mail,
   Settings,
   BarChart3,
   Ban,
-  Trash2,
 } from 'lucide-react';
 import {
   Button,

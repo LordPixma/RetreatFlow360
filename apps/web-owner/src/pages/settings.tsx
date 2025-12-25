@@ -3,8 +3,6 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import {
   Building,
-  Mail,
-  CreditCard,
   Key,
   Palette,
   Bell,
@@ -12,8 +10,6 @@ import {
   Save,
   Plus,
   Trash2,
-  Eye,
-  EyeOff,
   Copy,
 } from 'lucide-react';
 import {
@@ -25,14 +21,12 @@ import {
   CardDescription,
   Input,
   Label,
-  Textarea,
   Switch,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
   Separator,
-  Badge,
   Skeleton,
 } from '@retreatflow360/ui';
 import { useToast } from '@retreatflow360/ui';
@@ -66,7 +60,7 @@ interface ApiKey {
 }
 
 export default function SettingsPage() {
-  const { user } = useAuth();
+  const { } = useAuth(); // user removed
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [showNewKey, setShowNewKey] = useState<string | null>(null);

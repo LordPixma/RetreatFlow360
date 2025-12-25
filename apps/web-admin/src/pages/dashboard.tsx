@@ -21,7 +21,6 @@ import {
   Button,
   Skeleton,
   Badge,
-  Progress,
 } from '@retreatflow360/ui';
 import { formatCurrency } from '@retreatflow360/ui';
 import { api } from '@/lib/api';

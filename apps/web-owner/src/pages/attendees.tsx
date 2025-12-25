@@ -6,7 +6,6 @@ import {
   Download,
   Mail,
   Users,
-  AlertCircle,
   Utensils,
   Accessibility,
 } from 'lucide-react';

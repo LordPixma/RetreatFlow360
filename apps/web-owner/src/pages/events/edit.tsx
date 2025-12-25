@@ -69,7 +69,6 @@ export default function EventEditPage() {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors, isDirty },
   } = useForm<EventForm>({
     defaultValues: event

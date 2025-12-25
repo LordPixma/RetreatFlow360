@@ -16,7 +16,6 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  Separator,
 } from '@retreatflow360/ui';
 import { useToast } from '@retreatflow360/ui';
 import { api } from '@/lib/api';
@@ -78,7 +77,7 @@ export default function TenantCreatePage() {
   };
 
   // Auto-generate slug from name
-  const name = watch('name');
+  watch('name'); // Watching for form changes
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const slug = value

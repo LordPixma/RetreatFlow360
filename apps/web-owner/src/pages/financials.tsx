@@ -28,7 +28,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Badge,
+
 } from '@retreatflow360/ui';
 import { formatCurrency, formatDate } from '@retreatflow360/ui';
 import { api } from '@/lib/api';

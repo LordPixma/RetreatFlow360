@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import {  } from 'react';
 import {
   Activity,
   Database,
@@ -12,7 +12,6 @@ import {
   Loader2,
   Settings,
   Key,
-  Shield,
   Globe,
 } from 'lucide-react';
 import {
