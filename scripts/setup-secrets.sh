@@ -9,6 +9,10 @@ echo "RetreatFlow360 - Cloudflare Secrets Setup"
 echo "========================================="
 echo ""
 
+# Get the script directory and project root
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+
 # Check if wrangler is installed
 if ! command -v npx &> /dev/null; then
     echo "Error: npx not found. Please install Node.js first."
@@ -24,7 +28,7 @@ echo "  - Turnstile secret key"
 echo ""
 read -p "Press Enter to continue or Ctrl+C to cancel..."
 
-# Function to set secret
+# Function to set secret for API worker
 set_secret() {
     local env=$1
     local secret_name=$2
@@ -33,7 +37,11 @@ set_secret() {
     echo ""
     echo "Setting $secret_name for $env environment"
     echo "Description: $description"
+
+    # Change to API directory and set secret
+    cd "$PROJECT_ROOT/apps/api"
     npx wrangler secret put "$secret_name" --env "$env"
+    cd "$PROJECT_ROOT"
 }
 
 # Ask which environment to configure
@@ -81,6 +89,7 @@ for ENV in "${ENVS[@]}"; do
     set_secret "$ENV" "TURNSTILE_SECRET_KEY" "Cloudflare Turnstile secret key"
 
     # Optional: Microsoft OAuth
+    echo ""
     read -p "Do you want to configure Microsoft OAuth for $ENV? (y/n): " setup_oauth
     if [[ "$setup_oauth" == "y" ]]; then
         set_secret "$ENV" "MICROSOFT_CLIENT_SECRET" "Microsoft OAuth client secret"
@@ -105,7 +114,7 @@ echo "Secrets setup complete!"
 echo "========================================="
 echo ""
 echo "Next steps:"
-echo "1. Run database migrations: cd packages/database && npm run db:migrate"
-echo "2. Deploy workers: git push origin develop (for staging) or main (for production)"
-echo "3. Configure Cloudflare Pages projects in the dashboard"
+echo "1. Test staging: curl https://retreatflow360-api-staging.samuel-1e5.workers.dev/health"
+echo "2. Create Cloudflare Pages projects for frontend apps"
+echo "3. Deploy to production when ready"
 echo ""
