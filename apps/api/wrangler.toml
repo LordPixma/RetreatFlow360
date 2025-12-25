@@ -57,6 +57,14 @@ id = "166a0fb46ba34e65b6dd44b2088e7ca9"
 binding = "STORAGE"
 bucket_name = "retreatflow360-storage-staging"
 
+[[env.staging.queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "notifications-staging"
+
+[[env.staging.queues.producers]]
+binding = "PAYMENT_QUEUE"
+queue = "payments-staging"
+
 [env.staging.vars]
 ENVIRONMENT = "staging"
 JWT_ISSUER = "staging.retreatflow360.com"
@@ -81,6 +89,14 @@ id = "9bf1df0458a1442284bb19f839ec1e24"
 [[env.production.r2_buckets]]
 binding = "STORAGE"
 bucket_name = "retreatflow360-storage-prod"
+
+[[env.production.queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "notifications-prod"
+
+[[env.production.queues.producers]]
+binding = "PAYMENT_QUEUE"
+queue = "payments-prod"
 
 [env.production.vars]
 ENVIRONMENT = "production"
