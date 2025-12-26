@@ -47,6 +47,14 @@ app.use(
       if (origin.endsWith('.retreatflow360.com') || origin === 'https://retreatflow360.com') {
         return origin;
       }
+      // Allow Cloudflare Pages domains (staging and production)
+      if (origin.includes('retreatflow360') && origin.endsWith('.pages.dev')) {
+        return origin;
+      }
+      // Allow Cloudflare Workers domains
+      if (origin.endsWith('.workers.dev')) {
+        return origin;
+      }
       return null;
     },
     credentials: true,
